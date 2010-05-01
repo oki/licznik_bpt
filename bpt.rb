@@ -23,7 +23,7 @@ class BPT
                 all.gsub!(/[^0-9]/,'')
 
                 dist = all_dist.split('+').inject(0) { |xxx,x| xxx += x.to_i }
-            when / (\d+) km$/
+            when /\s*(\d+)\s*km$/
                 all = dist = $1
             else
                 all = 0
@@ -177,6 +177,13 @@ Protest.describe "Testuje" do
         dist,all = BPT.scan_for_distance(msg)
         assert_equal 47, dist
         assert_equal 4861, all
+    end
+
+    it "yello" do
+        msg = "35 km"
+        dist,all = BPT.scan_for_distance(msg)
+        assert_equal 35, dist
+        assert_equal 35, all
     end
 
 end

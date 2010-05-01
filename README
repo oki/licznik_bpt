@@ -1,0 +1,18 @@
+Main script:
+
+
+<pre>
+$ ruby km.rb 
+...
+script output
+</pre>
+
+Tests:
+<pre>
+$ ruby bpt.rb 
+..................
+
+18 tests, 36 assertions (18 passed, 0 pending, 0 failed, 0 errored)
+Ran in 0.003956 seconds
+
+</pre>

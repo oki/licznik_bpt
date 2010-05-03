@@ -1,33 +1,29 @@
 class BPT
     class<<self
 
-        def scan_for_distance(content)
+        def scan_for_distance(page_content)
 
             dist, all = 0
-            content.gsub!(/^.*edit/m,'')
+            #page_content.gsub!(/^.*edit/m,'')
+            page_content.gsub!(/ /m,'')
 
+            page_content.split(/edit/).each do |content|
             case content
-           #when /^\d+\+(\d+)=(\d+)(?:km)?/
-           #    dist = $1
-           #    all = $2
-            # msg = "Stawiasz pizze wszystkim 84 + 67 = 151"
-           #when /\s?\d+\s?\+\s?(\d+)\s?=\s?(\d+)(?:km)?/
-           #    dist = $1
-           #    all = $2
-            when /(?:edit)?.*?\d+\s*\+\s*(.*?)\s*=\s*(\d+.*?\d+)\s*(?:km)?/
-                all_dist = $1
+                when /.*?\s*\d+\s*\+\s*(.*?)\s*=\s*(\d+.*?\d+)\s*(?:km)?/
+                    all_dist = $1
 
-                # pp all_dist
+                    # pp all_dist
 
-                all = $2
-                all.gsub!(/[^0-9]/,'')
+                    all = $2
+                    all.gsub!(/[^0-9]/,'')
 
-                dist = all_dist.split('+').inject(0) { |xxx,x| xxx += x.to_i }
-            when /\s*(\d+)\s*km$/
-                all = dist = $1
-            else
-                all = 0
-                dist = 0
+                    dist += all_dist.split('+').inject(0) { |xxx,x| xxx += x.to_i }
+                when /\s*(\d+)\s*km$/
+                    all = dist = $1
+                else
+                    all = 0
+                    dist = 0
+                end
             end
 
             return dist.to_i, all.to_i
@@ -175,7 +171,7 @@ Protest.describe "Testuje" do
 
         4814 + 47 = 4861"
         dist,all = BPT.scan_for_distance(msg)
-        assert_equal 47, dist
+        assert_equal 76, dist
         assert_equal 4861, all
     end
 
@@ -185,6 +181,14 @@ Protest.describe "Testuje" do
         assert_equal 35, dist
         assert_equal 35, all
     end
+
+    it "misiek case??" do # nbsp in the message!
+        msg="1346  + 25 + 9 + 9 + 12 = 1401 km"
+        dist,all = BPT.scan_for_distance(msg)
+        assert_equal 55, dist
+        assert_equal 1401, all
+    end
+
 
 end
 end

@@ -4,16 +4,24 @@
 
 	<% nick = biker[0] -%>
 	<% dist = biker[1] -%>
+	<% lp = index + 1 -%>
 	
-	<%= index +1 %>: <%= link_to nick, trips_nick_month_path(:month => 5, :nick => nick) -%> # <%= dist -%><br>
+	<% if lp <= 3 %>
+		<b><%= index +1 %>: <%= link_to nick, trips_nick_month_path(:month => 5, :nick => nick) -%> # <%= dist -%> km<br></b>
+	<% else %>
+		<% if lp == 4 %>
+			<br>
+		<% end %>
+		<%= index +1 %>: <%= link_to nick, trips_nick_month_path(:month => 5, :nick => nick) -%> # <%= dist -%> km<br>
+	<% end %>
 
 <% end -%>
 
-
+<br>
 Ostatnia synchronizacja z forum: <%= @last_check -%>
 <br>
 Top za miesiac: <%= @month -%>
 
 <br>
 <hr>
-<small>Wersja 0.1 beta ;-)</small>
+<small>Wersja 0.2 beta ;-)</small>

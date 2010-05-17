@@ -95,3 +95,5 @@ end
 last_check = Dbconfig.find_by_name("last_check")
 last_check.value = Time.now
 last_check.save
+
+system("./sync_db.sh")

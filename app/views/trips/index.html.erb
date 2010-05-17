@@ -8,8 +8,8 @@
 	<% @trips.each do |trip| -%>
 
 		<%= trip.biker.nick -%>: <br>
-		<%= trip.message -%> <br>
-		<%= trip.dist -%> <br>
+		&nbsp;&nbsp;&nbsp; <small><%= trip.message -%></small> <br>
+		&nbsp;&nbsp;&nbsp; <b>+<%= trip.dist -%></b> km <br><br>
 
 	<% end %>
 

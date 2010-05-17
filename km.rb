@@ -91,3 +91,7 @@ arr.each_with_index do |biker,index|
 end
 
 # Biker.find_by_nick('nick').trips.sum(:dist)
+
+last_check = Dbconfig.find_by_name("last_check")
+last_check.value = Time.now
+last_check.save

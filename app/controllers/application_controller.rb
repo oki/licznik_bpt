@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+	before_filter :set_last_check
+  
+
+	def set_last_check
+		@last_check = Dbconfig.find_by_name("last_check").value
+	end
+		
 end

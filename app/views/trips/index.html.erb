@@ -1,0 +1,16 @@
+
+
+<% unless @trips %>
+	Nie znaleziono wycieczek
+	
+<% else %>
+
+	<% @trips.each do |trip| -%>
+
+		<%= trip.biker.nick -%>: <br>
+		<%= trip.message -%> <br>
+		<%= trip.dist -%> <br>
+
+	<% end %>
+
+<% end %>

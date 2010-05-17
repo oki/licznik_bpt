@@ -9,10 +9,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100517120453) do
+ActiveRecord::Schema.define(:version => 20100517141925) do
 
   create_table "bikers", :force => true do |t|
     t.string   "nick"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "configs", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dbconfigs", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trips", :force => true do |t|
+    t.integer  "biker_id"
+    t.integer  "month"
+    t.integer  "dist"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

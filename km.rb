@@ -21,8 +21,17 @@ unless licznik_link
 end
 
 page = licznik_link.click
+
 # miesiac_link = page.links.find { |l| l.text =~ /KWIECIE/ }
+# miesiac_numer = 4
+
 miesiac_link = page.links.find { |l| l.text =~ /MAJ/ }
+miesiac_numer = 5
+
+# miesiac_link = page.links.find { |l| l.text =~ /CZERWIEC/ }
+# miesiac_numer = 6
+
+
 # miesiac_link = page.links.find { |l| l.text =~ /MAJ/ }
 unless miesiac_link
     raise "nie moge znalezc linka do licznika"
@@ -41,6 +50,8 @@ bikers = Hash.new(0) # hash z bikerami, nick => ilosc km
         # nick = e.search('b a')[0].text
         # nick = e.search('b')[0].text
         nick = e.search('td.contacts a')[0].text
+
+        biker = Biker.find_or_create_by_nick(nick)
         msg = e.search('div.post').first.text.strip
 
 
@@ -51,9 +62,10 @@ bikers = Hash.new(0) # hash z bikerami, nick => ilosc km
             puts "#{nick} + #{dist} km"
             puts 
         #end
+
+
+				Trip.find_or_create_by_message(:message => msg, :dist => dist, :biker_id => biker.id, :month => miesiac_numer)
         bikers[nick] += dist
-
-
     end
 
     next_page_text = page.search('.middletext').first.search('b').first.next_sibling.next_sibling.text rescue nil
@@ -77,3 +89,5 @@ arr = bikers.sort { |a, b| b[1] <=> a[1] }
 arr.each_with_index do |biker,index|
     puts "#{index+1}. #{biker[0]}: #{biker[1]} km"
 end
+
+# Biker.find_by_nick('nick').trips.sum(:dist)

@@ -1,0 +1,17 @@
+
+
+<% @bikers.each_with_index do |biker,index| -%>
+
+	<% nick = biker[0] -%>
+	<% dist = biker[1] -%>
+	
+	<%= index +1 %>: <%= link_to nick, trips_nick_month_path(:month => 5, :nick => nick) -%> # <%= dist -%><br>
+
+<% end -%>
+
+
+Last check: <%= @last_check -%>
+
+<br>
+
+Top za miesiac: <%= @month -%>

@@ -21,8 +21,8 @@ unless licznik_link
 end
 
 page = licznik_link.click
-miesiac_link = page.links.find { |l| l.text =~ /KWIECIE/ }
-##  miesiac_link = page.links.find { |l| l.text =~ /MAJ/ }
+# miesiac_link = page.links.find { |l| l.text =~ /KWIECIE/ }
+miesiac_link = page.links.find { |l| l.text =~ /MAJ/ }
 # miesiac_link = page.links.find { |l| l.text =~ /MAJ/ }
 unless miesiac_link
     raise "nie moge znalezc linka do licznika"

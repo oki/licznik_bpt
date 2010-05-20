@@ -16,3 +16,6 @@ $ ruby bpt.rb
 Ran in 0.003956 seconds
 
 </pre>
+
+
+ALTER TABLE trips CONVERT TO CHARACTER SET 'utf8';

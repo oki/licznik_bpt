@@ -3,7 +3,8 @@
 require 'rubygems'
 require 'pp'
 require 'mechanize'
-require 'bpt'
+require "#{File.dirname(__FILE__)}/bpt"
+
 
 url = "http://bpt.debica.org/"
 

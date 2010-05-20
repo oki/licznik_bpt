@@ -6,6 +6,7 @@ class TripMailer < ActionMailer::Base
     subject       "Nowy wpis: #{trip.biker.nick} +#{trip.dist} km"
     sent_on       Time.now
     body(:trip => trip)
+    content_type  "text/html"
   end
 
 end

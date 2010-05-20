@@ -42,7 +42,6 @@ Rails::Initializer.run do |config|
   config.active_record.observers = [:trip_observer]
 
   config.action_mailer.smtp_settings = {
-		:enable_starttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
     :authentication => :plain,

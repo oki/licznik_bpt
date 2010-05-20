@@ -1,22 +1,26 @@
 
 
-document.write('<ol>');
+document.write('<br><br><ol>');
 
 <% @bikers.each_with_index do |biker,index| -%>
 	<% nick = biker[0] -%>
 	<% dist = biker[1] -%>
+	
+	<% if dist == 0 %>
+		<% next %>
+	<% end %>
+	
 	<% lp = index + 1 -%>
 	
-	
 	<% if lp <= 3 %>
-	document.write('<li><b><%= link_to nick, trips_nick_month_path(:month => 5, :nick => nick) -%> # <%= dist -%> km<br></b>');
+	document.write('<li><b><%= nick -%>: <%= dist -%> km<br></b>');
 	<% else %>
 	
 		<% if lp == 4 %>
 			document.write('<br>');
 		<% end %>
 		
-	document.write('<li><%= link_to nick, trips_nick_month_path(:month => 5, :nick => nick) -%> # <%= dist -%> km<br></li>');
+	document.write('<li><%= nick -%>: <%= dist -%> km<br></li>');
 	<% end %>
 	
 <% end -%>

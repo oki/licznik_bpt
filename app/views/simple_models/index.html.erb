@@ -1,0 +1,18 @@
+<h1>Listing simple_models</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @simple_models.each do |simple_model| %>
+  <tr>
+    <td><%= link_to 'Show', simple_model %></td>
+    <td><%= link_to 'Edit', edit_simple_model_path(simple_model) %></td>
+    <td><%= link_to 'Destroy', simple_model, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New simple_model', new_simple_model_path %>

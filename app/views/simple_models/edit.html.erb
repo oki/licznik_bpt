@@ -1,0 +1,12 @@
+<h1>Editing simple_model</h1>
+
+<% form_for(@simple_model) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @simple_model %> |
+<%= link_to 'Back', simple_models_path %>

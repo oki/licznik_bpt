@@ -10,9 +10,16 @@ class ApplicationController < ActionController::Base
 
 	before_filter :set_last_check
   
-
 	def set_last_check
-		@last_check = Dbconfig.find_by_name("last_check").value
+		
+		# respond_to do |wants|
+		# 	wants.html { 
+				
+		@last_check = Dbconfig.find_by_name("last_check").value	
+		# 		
+		# 	}
+		# end
+		
 	end
 		
 end

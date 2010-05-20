@@ -52,9 +52,14 @@ bikers = Hash.new(0) # hash z bikerami, nick => ilosc km
         # nick = e.search('b')[0].text
         nick = e.search('td.contacts a')[0].text
 
-        biker = Biker.find_or_create_by_nick(nick)
-        msg = e.search('div.post').first.text.strip
+        # biker = Biker.find_or_create_by_nick(nick)
 
+				biker = HerokuBiker.find :first, :params => { :nick => nick }
+				unless biker
+					biker = HerokuBiker.create(:nick => nick)
+				end
+				
+        msg = e.search('div.post').first.text.strip
 
         dist,all = BPT.scan_for_distance(msg)
         # puts nick
@@ -64,8 +69,12 @@ bikers = Hash.new(0) # hash z bikerami, nick => ilosc km
             puts 
         #end
 
-
-				Trip.find_or_create_by_message(:message => msg, :dist => dist, :biker_id => biker.id, :month => miesiac_numer)
+				# Trip.find_or_create_by_message(:message => msg, :dist => dist, :biker_id => biker.id, :month => miesiac_numer)
+				trip = HerokuTrip.find(:first, :params => { :message => msg })
+				unless trip
+					trip = HerokuTrip.create(:message => msg, :dist => dist, :biker_id => biker.id, :month => miesiac_numer)
+				end
+				
         bikers[nick] += dist
     end
 
@@ -97,4 +106,4 @@ last_check = Dbconfig.find_by_name("last_check")
 last_check.value = Time.now
 last_check.save
 
-system("./sync_db.sh")
+# system("./sync_db.sh")

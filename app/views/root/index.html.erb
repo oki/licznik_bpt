@@ -1,4 +1,5 @@
-
+<small>Licznik: <%= digit_to_month(@month) -%></small>
+<br><br>
 
 <% @bikers.each_with_index do |biker,index| -%>
 
@@ -18,10 +19,17 @@
 <% end -%>
 
 <br>
-Ostatnia synchronizacja z forum: <%= @last_check -%>
+<small>Ostatnia synchronizacja: <b><%= @last_check -%></b></small>
 <br>
-Top za miesiac: <%= @month -%>
+
 
 <br>
 <hr>
 <small>Wersja 0.2 beta ;-)</small>
+<br><br>
+
+<small>Changelog:<br>
+<ul>
+	<li>2010-05-20 - Dodana automatyczna synchronizacja z forum, licznik powinien się updejtować max. 3 min po napisaniu posta</li>
+</ul>
+</small>

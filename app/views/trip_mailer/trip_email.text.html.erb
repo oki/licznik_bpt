@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+	<style>
+	
+		#author {
+			padding-left: 1px;
+			padding-bottoom: 10px;
+		}
+		
+		#msg {
+		 	border-left: 1px solid;
+			padding-left: 10px;
+		}
+	
+	</style>
+  </head>
+  <body>
+
+    <h1></h1>
+
+    <p>
+      Nowy wpis:
+		<br/>
+		<br/>
+		<code id="author"><i><%=h @trip.biker.nick %></i>:</code> <br/>
+		
+		<code id="msg">
+      <%=h @trip.message %>
+		</code>
+		
+		<br/>
+		<br/>
+		
+		<b>+<%=h @trip.dist %></b> km
+    </p>
+
+  </body>
+</html>

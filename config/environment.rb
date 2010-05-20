@@ -38,4 +38,16 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+
+  config.active_record.observers = [:trip_observer]
+
+  config.action_mailer.smtp_settings = {
+		:enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :authentication => :plain,
+    :user_name => "bpt@md6.org",
+    :password => "123.qwe"
+  }
+
 end

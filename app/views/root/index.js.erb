@@ -13,7 +13,7 @@ document.write('<ol>');
 	<% lp = index + 1 -%>
 	
 	<% if lp <= 3 %>
-	document.write('<li><b><%= nick -%> - <%= dist -%> km<br></b>');
+		document.write('<li style="list-style-image: url(http://bpt.debica.org/wspomnienia/<%= lp -%>.png)"/><b><%= nick -%> - <%= dist -%> km<br></b>');
 	<% else %>
 	
 		<% if lp == 4 %>
